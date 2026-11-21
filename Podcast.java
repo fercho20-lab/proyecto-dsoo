@@ -1,21 +1,26 @@
 public class Podcast extends Contenido {
     private String anfitrion;
-    private int numeroEpisodio;
+    private int episodio;
 
-    public Podcast(String titulo, int duracionSegundos, Genero genero, String anfitrion, int numeroEpisodio) {
-        super(titulo, duracionSegundos, genero);
-        if (anfitrion == null || anfitrion.trim().isEmpty()) throw new IllegalArgumentException("El podcast debe tener anfitrion");
-        if (numeroEpisodio <= 0) throw new IllegalArgumentException("El numero de episodio debe ser mayor a 0");
-        this.anfitrion = anfitrion.trim();
-        this.numeroEpisodio = numeroEpisodio;
+    public Podcast(String titulo, int duracionSegundos, String anfitrion, int episodio) {
+        super(titulo, duracionSegundos);
+        this.anfitrion = anfitrion;
+        this.episodio = episodio;
     }
 
-    public String getAnfitrion() { return anfitrion; }
-    public int getNumeroEpisodio() { return numeroEpisodio; }
+    public String getAnfitrion() {
+        return anfitrion;
+    }
 
-    public String obtenerDetalle() {
-        String detalle = "[Podcast] " + titulo + " - Ep. " + numeroEpisodio + " con " + anfitrion + " | " + genero + " | " + formatearDuracion(duracionSegundos);
-        if (favorito) detalle += " <3";
-        return detalle;
+    public int getEpisodio() {
+        return episodio;
+    }
+
+    public String getTipo() {
+        return "Podcast";
+    }
+
+    public String getDetalle() {
+        return anfitrion + " (episodio " + episodio + ")";
     }
 }
